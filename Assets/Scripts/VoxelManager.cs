@@ -16,6 +16,7 @@ namespace VoxelEngine
         private JobHandle marchingCubesJobHandle;
         private JobHandle meshBuilderHandle;
 
+        [SerializeField]
         private float isoLevel = 0.5f;
 
         [SerializeField] 
@@ -26,9 +27,9 @@ namespace VoxelEngine
 
         [Range(0.0f,0.5f)]
         [SerializeField]
-        private float noiseSpeed = 0.00005f;
+        private float noiseSpeed = 0.005f;
 
-        bool growEffect;
+        private bool growEffect;
 
         void Awake()
         {
