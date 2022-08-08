@@ -34,7 +34,7 @@ namespace VoxelEngine
         {
             mesh = new Mesh();
             mesh.indexFormat = IndexFormat.UInt16;
-            mesh.name = "Tetrahedron";
+            mesh.name = "Marching cubes mesh";
             meshFilter = GetComponent<MeshFilter>();
             meshCollider = GetComponent<MeshCollider>();
             gridSize = chunkSize + new int3(1,1,1);
