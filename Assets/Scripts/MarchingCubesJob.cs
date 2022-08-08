@@ -48,7 +48,6 @@ namespace VoxelEngine
             // Find vertices inside the surface
             for (int i = 0; i < 8; i++)
             {
-                //float cube = noise.cnoise((posNoise + o) * _noiseScale);
                 int3 offset = VertexOffset[i];
                 int3 posVertex = new int3(gridPosition.x + offset.x, gridPosition.y + offset.y, gridPosition.z + offset.z);
 
