@@ -112,14 +112,6 @@ namespace VoxelEngine
             nativeIndicess.Dispose();
             nativeVertexData.Dispose();
         }
-
-        static readonly VertexAttributeDescriptor[] vertexAttributeDescriptor =
-        {
-            new VertexAttributeDescriptor(VertexAttribute.Position, VertexAttributeFormat.Float32, dimension: 3, stream: 0),
-            new VertexAttributeDescriptor(VertexAttribute.Normal, VertexAttributeFormat.Float32, dimension: 3, stream: 0),
-            new VertexAttributeDescriptor(VertexAttribute.Color, VertexAttributeFormat.Float32, dimension: 4, stream: 0),
-            new VertexAttributeDescriptor(VertexAttribute.TexCoord0, VertexAttributeFormat.Float32, dimension: 4, stream: 0)
-        };
     }
 
     public struct VertexData
