@@ -1,7 +1,7 @@
 /*
     original repo: https://github.com/Eldemarkki/Marching-Cubes-Terrain
     auther: Eetu M‰enp‰‰
- */
+*/
 
 using System;
 using System.Threading;

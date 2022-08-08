@@ -1,3 +1,9 @@
+/*
+    original repo: https://gist.github.com/LukasFratzl/b479a74087e17d729e8319edd4808757
+    auther: Lukas Fratzl
+    git: https://github.com/LukasFratzl
+*/
+
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
