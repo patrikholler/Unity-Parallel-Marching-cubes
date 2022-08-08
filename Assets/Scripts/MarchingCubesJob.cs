@@ -33,7 +33,7 @@ namespace VoxelEngine
 
         public void Execute(int index)
         {
-            Vector3Int gridPosition = To3DIndex(index);
+            int3 gridPosition = To3DIndex(index);
 
             if (gridPosition.x >= chunkSize.x || gridPosition.y >= chunkSize.y || gridPosition.z >= chunkSize.z)
             {
@@ -49,8 +49,8 @@ namespace VoxelEngine
             for (int i = 0; i < 8; i++)
             {
                 //float cube = noise.cnoise((posNoise + o) * _noiseScale);
-                float3 offset = VertexOffset[i];
-                float3 posVertex = new float3(gridPosition.x + offset.x, gridPosition.y + offset.y, gridPosition.z + offset.z);
+                int3 offset = VertexOffset[i];
+                int3 posVertex = new int3(gridPosition.x + offset.x, gridPosition.y + offset.y, gridPosition.z + offset.z);
 
                 posVertex.x -= gridSize.x / 2;
                 posVertex.y -= gridSize.y / 2;
@@ -59,10 +59,8 @@ namespace VoxelEngine
                 float sqr_dist = math.pow(posVertex.x, 2) + math.pow(posVertex.y, 2) + math.pow(posVertex.z, 2);
                 float sqr_rad = math.pow(noiseScale, 2);
 
-                float cube = sqr_dist - sqr_rad; // - noise.cnoise(posVertex * 10.4f);
-                //float cube = -posVertex.y + 1f;
-                //float noise2 = PerlinNoise3D(posVertex.x, posVertex.y, posVertex.z) * noise.cnoise(posVertex * noiseScale);
-                //float cube = noise.cnoise(posVertex * noiseScale); // noise.cnoise(posVertex * noiseScale);
+                float cube = sqr_dist - sqr_rad;
+                //float cube = -posVertex.y + 1f; //simple plane
 
                 if (cube < isoLevel)
                 {
@@ -128,9 +126,9 @@ namespace VoxelEngine
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        Vector3Int To3DIndex(int index)
+        int3 To3DIndex(int index)
         {
-            return new Vector3Int
+            return new int3
             {
                 z = index % gridSize.z,
                 y = (index / gridSize.z) % gridSize.y,
@@ -154,16 +152,16 @@ namespace VoxelEngine
             return _d1.xyz + ((isoLevel - _d1.w) / (_d2.w - _d1.w)) * (_d2.xyz - _d1.xyz);
         }
 
-        static readonly float3[] VertexOffset =
+        static readonly int3[] VertexOffset =
         {
-            new float3(0, 0, 0),
-            new float3(1, 0, 0),
-            new float3(1, 1, 0),
-            new float3(0, 1, 0),
-            new float3(0, 0, 1),
-            new float3(1, 0, 1),
-            new float3(1, 1, 1),
-            new float3(0, 1, 1)
+            new int3(0, 0, 0),
+            new int3(1, 0, 0),
+            new int3(1, 1, 0),
+            new int3(0, 1, 0),
+            new int3(0, 0, 1),
+            new int3(1, 0, 1),
+            new int3(1, 1, 1),
+            new int3(0, 1, 1)
         };
 
         static readonly ushort[] EdgeTable =
