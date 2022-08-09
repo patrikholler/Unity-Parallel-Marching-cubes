@@ -93,9 +93,9 @@ namespace VoxelEngine
 
                 MeshBuilderJob meshBuilderJob = new MeshBuilderJob()
                 {
-                    indices = marchingcubesJob.indices, // HERE WE STRAIGHT USE THE DATA OF THE MESH GENERATOR
-                    vertexData = marchingcubesJob.vertexData, // SAME HERE
-                    _meshDataArray = meshDataArray, // MESH ALLOCATOR
+                    indices = marchingcubesJob.indices,
+                    vertexData = marchingcubesJob.vertexData,
+                    _meshDataArray = meshDataArray,
                 };
 
                 meshBuilderHandle = meshBuilderJob.Schedule(marchingCubesJobHandle);

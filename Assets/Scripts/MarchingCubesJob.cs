@@ -51,22 +51,20 @@ namespace VoxelEngine
                 int3 offset = VertexOffset[i];
                 int3 posVertex = new int3(gridPosition.x + offset.x, gridPosition.y + offset.y, gridPosition.z + offset.z);
 
-                posVertex.x -= gridSize.x / 2;
-                posVertex.y -= gridSize.y / 2;
-                posVertex.z -= gridSize.z / 2;
+                posVertex.xyz -= gridSize.xyz / 2;
 
                 float sqr_dist = math.pow(posVertex.x, 2) + math.pow(posVertex.y, 2) + math.pow(posVertex.z, 2);
                 float sqr_rad = math.pow(noiseScale, 2);
 
-                float cube = sqr_dist - sqr_rad;
-                //float cube = -posVertex.y + 1f; //simple plane
+                float density = sqr_dist - sqr_rad;
+                //float density = posVertex.y + noiseScale; //simple plane
 
-                if (cube < isoLevel)
+                if (density < isoLevel)
                 {
                     cubeIndex |= 1 << i;
                 }
 
-                cornersVertexData[i] = new float4(posVertex, cube);
+                cornersVertexData[i] = new float4(posVertex, density);
             }
 
             // Cube is entirely in/out of the surface
