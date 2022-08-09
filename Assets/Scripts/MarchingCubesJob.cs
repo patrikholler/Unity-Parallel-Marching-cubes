@@ -51,7 +51,9 @@ namespace VoxelEngine
                 int3 offset = VertexOffset[i];
                 int3 posVertex = new int3(gridPosition.x + offset.x, gridPosition.y + offset.y, gridPosition.z + offset.z);
 
-                posVertex.xyz -= gridSize.xyz / 2;
+                posVertex.x -= gridSize.x / 2;
+                posVertex.y -= gridSize.y / 2;
+                posVertex.z -= gridSize.z / 2;
 
                 float sqr_dist = math.pow(posVertex.x, 2) + math.pow(posVertex.y, 2) + math.pow(posVertex.z, 2);
                 float sqr_rad = math.pow(noiseScale, 2);
@@ -107,13 +109,13 @@ namespace VoxelEngine
 
                 for (int j = 0; j < 3; j++)
                 {
-                    VertexData _data = new VertexData();
-                    _data.Position = vertex3[j];
-                    _data.Normal = normal;
-                    _data.Color = new Color(1f, 0f, 0, 0f);
-                    _data.UV1 = float4.zero;
+                    VertexData data = new VertexData();
+                    data.Position = vertex3[j];
+                    data.Normal = normal;
+                    data.Color = new Color(1f, 0f, 0, 0f);
+                    data.UV1 = float4.zero;
 
-                    vertexData[triangleIndex + j] = _data;
+                    vertexData[triangleIndex + j] = data;
                     indices[triangleIndex + j] = (ushort)(triangleIndex + WindingOrder[j]);
                 }
             }
